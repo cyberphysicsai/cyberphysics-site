@@ -28,7 +28,7 @@ function prepareChalk(svg) {
 // ---- chalk text: split blocks into word/char spans that materialize on scroll ----
 
 const MAT_TARGETS = [
-  ".brand-name", ".site-nav a", ".kicker", ".hero-tagline", ".hero-body",
+  ".brand-name", ".site-nav a", ".kicker", ".masthead-sub", ".hero-tagline", ".hero-body",
   ".btn-panel", ".section-head h2", ".board-note", ".card-plate",
   ".card h3", ".card p", ".card-link", ".panel-stamp", ".panel h3",
   ".panel p", ".about-stamp", ".about h2", ".about-lede", ".about p",

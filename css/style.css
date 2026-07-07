@@ -195,6 +195,16 @@ main { position: relative; z-index: 2; }
     0 0 90px rgba(236, 234, 228, 0.12);
 }
 
+.masthead-sub {
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 1.9vw, 1.2rem);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--starlight);
+  margin: -0.7rem 0 1.5rem;
+  text-shadow: 0 0 18px rgba(236, 234, 228, 0.22);
+}
+
 .hero-tagline {
   font-family: var(--font-serif);
   font-style: italic;
@@ -278,6 +288,11 @@ main { position: relative; z-index: 2; }
   font-family: var(--font-type);
   font-size: 13px;
   letter-spacing: 3px;
+}
+
+.svg-type--sm text {
+  font-size: 11px;
+  letter-spacing: 2.2px;
 }
 
 /* objects adrift in the void (inner group only — placement stays on the parent) */
