@@ -691,6 +691,58 @@ h2 {
 
 .card-link:hover { border-color: var(--chalk); }
 
+/* chalked on the board: acquire CPHY on Uniswap */
+.board-buy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.8rem, 2vw, 1.4rem);
+  flex-wrap: wrap;
+  width: fit-content;
+  margin: 2rem auto 0.6rem;
+  text-decoration: none;
+}
+
+.board-buy-art {
+  width: 190px;
+  height: 74px;
+  flex: none;
+  color: var(--chalk-dim);
+  transition: color 250ms ease, filter 250ms ease;
+}
+
+.board-buy-text {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--chalk);
+  border-bottom: 2px dashed var(--chalk-faint);
+  padding-bottom: 0.1em;
+  transition: color 250ms ease, text-shadow 250ms ease, border-color 250ms ease;
+}
+
+.board-buy:hover .board-buy-art,
+.board-buy:focus-visible .board-buy-art {
+  color: #ffffff;
+  filter: drop-shadow(0 0 10px rgba(236, 234, 228, 0.8)) drop-shadow(0 0 26px rgba(236, 234, 228, 0.3));
+}
+
+.board-buy:hover .mane,
+.board-buy:focus-visible .mane {
+  filter: drop-shadow(0 0 7px rgba(242, 159, 197, 0.9));
+}
+
+.board-buy:hover .board-buy-text,
+.board-buy:focus-visible .board-buy-text {
+  color: #ffffff;
+  text-shadow: 0 0 16px rgba(255, 255, 255, 0.45);
+  border-color: var(--chalk);
+}
+
+.board-buy:focus-visible {
+  outline: 1.5px dashed var(--chalk);
+  outline-offset: 6px;
+}
+
 /* chalk tray — bottom ledge of the board */
 .tray {
   position: relative;
@@ -782,6 +834,48 @@ h2 {
   font-size: 0.98rem;
   margin: 0;
   max-width: 48ch;
+}
+
+/* the token panel's live action: atom illuminates, chalk invites */
+.acquire-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 1.15rem;
+  text-decoration: none;
+}
+
+.acquire-atom {
+  width: 46px;
+  height: 46px;
+  flex: none;
+  color: var(--silver);
+  transition: color 250ms ease, filter 250ms ease, transform 350ms ease;
+}
+
+.acquire-text {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--chalk);
+  transition: color 250ms ease, text-shadow 250ms ease;
+}
+
+.acquire-link:hover .acquire-atom,
+.acquire-link:focus-visible .acquire-atom {
+  color: #ffffff;
+  filter: drop-shadow(0 0 10px rgba(236, 234, 228, 0.85)) drop-shadow(0 0 26px rgba(236, 234, 228, 0.35));
+  transform: rotate(10deg);
+}
+
+.acquire-link:hover .acquire-text,
+.acquire-link:focus-visible .acquire-text {
+  color: #ffffff;
+  text-shadow: 0 0 14px rgba(255, 255, 255, 0.4);
+}
+
+.acquire-link:focus-visible {
+  outline: 1.5px dashed var(--starlight);
+  outline-offset: 4px;
 }
 
 /* ---------- about ---------- */
