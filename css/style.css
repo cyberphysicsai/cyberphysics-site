@@ -840,9 +840,26 @@ h2 {
 .acquire-link {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.85rem;
   margin-top: 1.15rem;
   text-decoration: none;
+}
+
+/* the Virtuals swallow, traced in chalk */
+.virtuals-mark {
+  width: 100%;
+  max-width: 218px;
+  height: auto;
+  color: var(--chalk-dim);
+  margin-top: 0.2rem;
+  transition: color 250ms ease, filter 250ms ease;
+}
+
+.acquire-link:hover .virtuals-mark,
+.acquire-link:focus-visible .virtuals-mark {
+  color: #ffffff;
+  filter: drop-shadow(0 0 8px rgba(236, 234, 228, 0.7));
 }
 
 .acquire-atom {
