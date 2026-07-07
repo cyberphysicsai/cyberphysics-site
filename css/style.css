@@ -156,6 +156,24 @@ main { position: relative; z-index: 2; }
 .site-nav a:hover::after,
 .site-nav a.is-active::after { transform: scaleX(1); }
 
+/* the one action in the nav: a bordered pill that inverts */
+.site-nav .nav-cta {
+  color: var(--starlight);
+  border: 1px solid var(--gray);
+  padding: 0.45rem 0.85rem;
+  transition: color 200ms ease, background 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.site-nav .nav-cta::after { content: none; }
+
+.site-nav .nav-cta:hover,
+.site-nav .nav-cta:focus-visible {
+  color: var(--void);
+  background: var(--starlight);
+  border-color: var(--starlight);
+  box-shadow: 0 0 18px rgba(236, 234, 228, 0.4);
+}
+
 /* ---------- hero ---------- */
 
 /* the landing IS the figure: full-viewport stage, copy waits below the fold */
