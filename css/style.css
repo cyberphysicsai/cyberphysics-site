@@ -1110,7 +1110,7 @@ h2 {
 /* ---------- responsive ---------- */
 
 @media (max-width: 880px) {
-  .masthead { font-size: clamp(2.6rem, 12vw, 4.2rem); }
+  .masthead { font-size: clamp(2.2rem, 9.5vw, 4rem); }
 }
 
 @media (max-width: 560px) {
