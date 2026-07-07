@@ -1,0 +1,14 @@
+{
+  "name": "cyberphysics-site",
+  "private": true,
+  "version": "0.1.0",
+  "description": "cyberphysics.ai — blackboard lessons from the golden age of physics",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}

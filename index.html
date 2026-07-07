@@ -1,0 +1,996 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cyberphysics — Science Fact from the Golden Age of Physics</title>
+  <meta name="description" content="Presented in glorious black and white: lessons from the golden age of physics, 1940–1965. The atomic age, the space age, and the ideas that built them." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Michroma&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <!-- Shared SVG defs: chalk-texture filters (used inside the blackboard) -->
+  <svg class="svg-defs" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="chalk-rough" x="-8%" y="-8%" width="116%" height="116%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" seed="7" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.4" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+      <filter id="chalk-fine" x="-6%" y="-6%" width="112%" height="112%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="11" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+      <!-- white speckle on black: the marbled cover of a composition notebook -->
+      <filter id="marble" x="0%" y="0%" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="3" seed="9" result="n" />
+        <feColorMatrix in="n" type="luminanceToAlpha" result="a" />
+        <feComponentTransfer in="a" result="t">
+          <feFuncA type="discrete" tableValues="0 0 0 0 0.9" />
+        </feComponentTransfer>
+        <feFlood flood-color="#d9d7d1" result="w" />
+        <feComposite in="w" in2="t" operator="in" />
+      </filter>
+      <!-- photoreal monochrome kit: glows, spheres, disks, trails -->
+      <radialGradient id="g-star">
+        <stop offset="0" stop-color="#ffffff" />
+        <stop offset="0.25" stop-color="#eceae4" stop-opacity=".9" />
+        <stop offset="1" stop-color="#eceae4" stop-opacity="0" />
+      </radialGradient>
+      <radialGradient id="g-electron">
+        <stop offset="0" stop-color="#ffffff" stop-opacity=".95" />
+        <stop offset="0.35" stop-color="#eceae4" stop-opacity=".55" />
+        <stop offset="1" stop-color="#eceae4" stop-opacity="0" />
+      </radialGradient>
+      <radialGradient id="g-halo">
+        <stop offset="0" stop-color="#eceae4" stop-opacity=".6" />
+        <stop offset="0.5" stop-color="#eceae4" stop-opacity=".18" />
+        <stop offset="1" stop-color="#eceae4" stop-opacity="0" />
+      </radialGradient>
+      <radialGradient id="g-sphere" cx="0.35" cy="0.3" r="0.9">
+        <stop offset="0" stop-color="#f7f5f0" />
+        <stop offset="0.45" stop-color="#b9b7b2" />
+        <stop offset="0.8" stop-color="#5f5d59" />
+        <stop offset="1" stop-color="#3c3a37" />
+      </radialGradient>
+      <linearGradient id="g-disk" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#eceae4" stop-opacity=".05" />
+        <stop offset="0.5" stop-color="#ffffff" stop-opacity=".95" />
+        <stop offset="1" stop-color="#eceae4" stop-opacity=".05" />
+      </linearGradient>
+      <linearGradient id="g-trail" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#eceae4" stop-opacity="0" />
+        <stop offset="1" stop-color="#ffffff" stop-opacity=".85" />
+      </linearGradient>
+      <linearGradient id="g-sheen" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ffffff" stop-opacity=".14" />
+        <stop offset="0.45" stop-color="#ffffff" stop-opacity="0" />
+      </linearGradient>
+      <filter id="soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.1" /></filter>
+      <filter id="soft2" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.4" /></filter>
+    </defs>
+  </svg>
+
+  <!-- ambient field: blockchains, helixes & golden spirals assembling, expanding, traveling across the whole page -->
+  <div class="ambient-field" aria-hidden="true">
+    <svg class="chalk-anim on" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" focusable="false">
+      <g class="traveler t1">
+        <g style="--hdur: 14s; --rstep: 0.96s">
+          <g fill="none" stroke="currentColor" stroke-linecap="round">
+            <path class="helix-grow" pathLength="100" d="M0,0 q13.75,-15 27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0" stroke-width="1.7" />
+            <path class="helix-grow" pathLength="100" d="M0,0 q13.75,15 27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0" stroke-width="1.4" />
+            <path class="helix-rung" style="--i:0" d="M13.75,-6.5 L13.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:1" d="M41.25,-6.5 L41.25,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:2" d="M68.75,-6.5 L68.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:3" d="M96.25,-6.5 L96.25,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:4" d="M123.75,-6.5 L123.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:5" d="M151.25,-6.5 L151.25,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:6" d="M178.75,-6.5 L178.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:7" d="M206.25,-6.5 L206.25,6.5" stroke-width="1.3" />
+          </g>
+        </g>
+      </g>
+      <g class="traveler t2">
+        <g style="--cdur: 14s; --cstep: 0.75s" stroke="rgba(236,234,228,0.35)" stroke-width=".7" stroke-linejoin="round">
+          <g fill="none" stroke="rgba(236,234,228,0.55)" stroke-dasharray="4 4" stroke-width="1.3">
+            <path class="bc-link" style="--ci:0" d="M0,0 L32,26" />
+            <path class="bc-link" style="--ci:1" d="M32,26 L64,52" />
+            <path class="bc-link" style="--ci:2" d="M64,52 L96,78" />
+            <path class="bc-link" style="--ci:3" d="M96,78 L128,104" />
+            <path class="bc-link" style="--ci:4" d="M128,104 L160,130" />
+          </g>
+          <g transform="translate(0,0)"><g class="bc-cube" style="--ci:0">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(32,26)"><g class="bc-cube" style="--ci:1">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(64,52)"><g class="bc-cube" style="--ci:2">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(96,78)"><g class="bc-cube" style="--ci:3">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(128,104)"><g class="bc-cube" style="--ci:4">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(160,130)"><g class="bc-cube" style="--ci:5">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+        </g>
+      </g>
+      <g class="traveler t3">
+        <g style="--hdur: 14s; --rstep: 0.96s">
+          <g fill="none" stroke="currentColor" stroke-linecap="round">
+            <path class="helix-grow" pathLength="100" d="M0,0 q13.75,-15 27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0" stroke-width="1.7" />
+            <path class="helix-grow" pathLength="100" d="M0,0 q13.75,15 27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0" stroke-width="1.4" />
+            <path class="helix-rung" style="--i:0" d="M13.75,-6.5 L13.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:1" d="M41.25,-6.5 L41.25,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:2" d="M68.75,-6.5 L68.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:3" d="M96.25,-6.5 L96.25,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:4" d="M123.75,-6.5 L123.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:5" d="M151.25,-6.5 L151.25,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:6" d="M178.75,-6.5 L178.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:7" d="M206.25,-6.5 L206.25,6.5" stroke-width="1.3" />
+          </g>
+        </g>
+      </g>
+      <g class="traveler t4">
+        <g style="--cdur: 14s; --cstep: 0.75s" stroke="rgba(236,234,228,0.35)" stroke-width=".7" stroke-linejoin="round">
+          <g fill="none" stroke="rgba(236,234,228,0.55)" stroke-dasharray="4 4" stroke-width="1.3">
+            <path class="bc-link" style="--ci:0" d="M0,0 L32,26" />
+            <path class="bc-link" style="--ci:1" d="M32,26 L64,52" />
+            <path class="bc-link" style="--ci:2" d="M64,52 L96,78" />
+            <path class="bc-link" style="--ci:3" d="M96,78 L128,104" />
+            <path class="bc-link" style="--ci:4" d="M128,104 L160,130" />
+          </g>
+          <g transform="translate(0,0)"><g class="bc-cube" style="--ci:0">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(32,26)"><g class="bc-cube" style="--ci:1">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(64,52)"><g class="bc-cube" style="--ci:2">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(96,78)"><g class="bc-cube" style="--ci:3">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(128,104)"><g class="bc-cube" style="--ci:4">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(160,130)"><g class="bc-cube" style="--ci:5">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+        </g>
+      </g>
+      <g class="traveler t5">
+        <g style="--hdur: 14s; --rstep: 0.96s">
+          <g fill="none" stroke="currentColor" stroke-linecap="round">
+            <path class="helix-grow" pathLength="100" d="M0,0 q13.75,-15 27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0" stroke-width="1.7" />
+            <path class="helix-grow" pathLength="100" d="M0,0 q13.75,15 27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0" stroke-width="1.4" />
+            <path class="helix-rung" style="--i:0" d="M13.75,-6.5 L13.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:1" d="M41.25,-6.5 L41.25,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:2" d="M68.75,-6.5 L68.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:3" d="M96.25,-6.5 L96.25,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:4" d="M123.75,-6.5 L123.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:5" d="M151.25,-6.5 L151.25,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:6" d="M178.75,-6.5 L178.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:7" d="M206.25,-6.5 L206.25,6.5" stroke-width="1.3" />
+          </g>
+        </g>
+      </g>
+      <g class="traveler t6">
+        <g style="--cdur: 14s; --cstep: 0.75s" stroke="rgba(236,234,228,0.35)" stroke-width=".7" stroke-linejoin="round">
+          <g fill="none" stroke="rgba(236,234,228,0.55)" stroke-dasharray="4 4" stroke-width="1.3">
+            <path class="bc-link" style="--ci:0" d="M0,0 L32,26" />
+            <path class="bc-link" style="--ci:1" d="M32,26 L64,52" />
+            <path class="bc-link" style="--ci:2" d="M64,52 L96,78" />
+            <path class="bc-link" style="--ci:3" d="M96,78 L128,104" />
+            <path class="bc-link" style="--ci:4" d="M128,104 L160,130" />
+          </g>
+          <g transform="translate(0,0)"><g class="bc-cube" style="--ci:0">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(32,26)"><g class="bc-cube" style="--ci:1">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(64,52)"><g class="bc-cube" style="--ci:2">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(96,78)"><g class="bc-cube" style="--ci:3">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(128,104)"><g class="bc-cube" style="--ci:4">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(160,130)"><g class="bc-cube" style="--ci:5">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+        </g>
+      </g>
+      <g class="traveler t7">
+        <g class="spiral-spin">
+          <path class="helix-grow" pathLength="100" style="--hdur: 20s" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M0,0 a4,4 0 0 1 4,-4 a4,4 0 0 1 4,4 a8,8 0 0 1 -8,8 a12,12 0 0 1 -12,-12 a20,20 0 0 1 20,-20 a32,32 0 0 1 32,32 a52,52 0 0 1 -52,52" />
+        </g>
+      </g>
+      <g class="traveler t8">
+        <g class="spiral-spin">
+          <path class="helix-grow" pathLength="100" style="--hdur: 20s" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M0,0 a4,4 0 0 1 4,-4 a4,4 0 0 1 4,4 a8,8 0 0 1 -8,8 a12,12 0 0 1 -12,-12 a20,20 0 0 1 20,-20 a32,32 0 0 1 32,32 a52,52 0 0 1 -52,52" />
+        </g>
+      </g>
+      <g class="traveler t9">
+        <g transform="scale(-1,1)">
+          <g class="spiral-spin">
+            <path class="helix-grow" pathLength="100" style="--hdur: 17s" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M0,0 a4,4 0 0 1 4,-4 a4,4 0 0 1 4,4 a8,8 0 0 1 -8,8 a12,12 0 0 1 -12,-12 a20,20 0 0 1 20,-20 a32,32 0 0 1 32,32 a52,52 0 0 1 -52,52" />
+          </g>
+        </g>
+      </g>
+      <g class="traveler t10">
+        <g style="--hdur: 12s; --rstep: 1.1s">
+          <g fill="none" stroke="currentColor" stroke-linecap="round">
+            <path class="helix-grow" pathLength="100" d="M0,0 q13.75,-15 27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0" stroke-width="1.7" />
+            <path class="helix-grow" pathLength="100" d="M0,0 q13.75,15 27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0" stroke-width="1.4" />
+            <path class="helix-rung" style="--i:0" d="M13.75,-6.5 L13.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:1" d="M41.25,-6.5 L41.25,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:2" d="M68.75,-6.5 L68.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:3" d="M96.25,-6.5 L96.25,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:4" d="M123.75,-6.5 L123.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:5" d="M151.25,-6.5 L151.25,6.5" stroke-width="1.3" />
+          </g>
+        </g>
+      </g>
+      <g class="traveler t11">
+        <g style="--hdur: 16s; --rstep: 0.88s">
+          <g fill="none" stroke="currentColor" stroke-linecap="round">
+            <path class="helix-grow" pathLength="100" d="M0,0 q13.75,-15 27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0" stroke-width="1.7" />
+            <path class="helix-grow" pathLength="100" d="M0,0 q13.75,15 27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0" stroke-width="1.4" />
+            <path class="helix-rung" style="--i:0" d="M13.75,-6.5 L13.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:1" d="M41.25,-6.5 L41.25,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:2" d="M68.75,-6.5 L68.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:3" d="M96.25,-6.5 L96.25,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:4" d="M123.75,-6.5 L123.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:5" d="M151.25,-6.5 L151.25,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:6" d="M178.75,-6.5 L178.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:7" d="M206.25,-6.5 L206.25,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:8" d="M233.75,-6.5 L233.75,6.5" stroke-width="1.3" />
+            <path class="helix-rung" style="--i:9" d="M261.25,-6.5 L261.25,6.5" stroke-width="1.3" />
+          </g>
+        </g>
+      </g>
+      <g class="traveler t12">
+        <g style="--cdur: 12s; --cstep: 0.85s" stroke="rgba(236,234,228,0.35)" stroke-width=".7" stroke-linejoin="round">
+          <g fill="none" stroke="rgba(236,234,228,0.55)" stroke-dasharray="4 4" stroke-width="1.3">
+            <path class="bc-link" style="--ci:0" d="M0,0 L32,26" />
+            <path class="bc-link" style="--ci:1" d="M32,26 L64,52" />
+            <path class="bc-link" style="--ci:2" d="M64,52 L96,78" />
+          </g>
+          <g transform="translate(0,0)"><g class="bc-cube" style="--ci:0">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(32,26)"><g class="bc-cube" style="--ci:1">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(64,52)"><g class="bc-cube" style="--ci:2">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(96,78)"><g class="bc-cube" style="--ci:3">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+        </g>
+      </g>
+      <g class="traveler t13">
+        <g style="--cdur: 16s; --cstep: 0.7s" stroke="rgba(236,234,228,0.35)" stroke-width=".7" stroke-linejoin="round">
+          <g fill="none" stroke="rgba(236,234,228,0.55)" stroke-dasharray="4 4" stroke-width="1.3">
+            <path class="bc-link" style="--ci:0" d="M0,0 L32,26" />
+            <path class="bc-link" style="--ci:1" d="M32,26 L64,52" />
+            <path class="bc-link" style="--ci:2" d="M64,52 L96,78" />
+            <path class="bc-link" style="--ci:3" d="M96,78 L128,104" />
+            <path class="bc-link" style="--ci:4" d="M128,104 L160,130" />
+            <path class="bc-link" style="--ci:5" d="M160,130 L192,156" />
+            <path class="bc-link" style="--ci:6" d="M192,156 L224,182" />
+          </g>
+          <g transform="translate(0,0)"><g class="bc-cube" style="--ci:0">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(32,26)"><g class="bc-cube" style="--ci:1">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(64,52)"><g class="bc-cube" style="--ci:2">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(96,78)"><g class="bc-cube" style="--ci:3">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(128,104)"><g class="bc-cube" style="--ci:4">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(160,130)"><g class="bc-cube" style="--ci:5">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(192,156)"><g class="bc-cube" style="--ci:6">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+          <g transform="translate(224,182)"><g class="bc-cube" style="--ci:7">
+            <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+            <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+            <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+          </g></g>
+        </g>
+      </g>
+      <g class="traveler t14">
+          <g class="spiral-spin" style="--sdur: 60s">
+            <path class="helix-grow" pathLength="100" style="--hdur: 24s" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M0,0 a4,4 0 0 1 4,-4 a4,4 0 0 1 4,4 a8,8 0 0 1 -8,8 a12,12 0 0 1 -12,-12 a20,20 0 0 1 20,-20 a32,32 0 0 1 32,32 a52,52 0 0 1 -52,52 a84,84 0 0 1 -84,-84" />
+          </g>
+      </g>
+      <g class="traveler t15">
+        <g transform="scale(-1,1)">
+          <g class="spiral-spin" style="--sdur: 34s">
+            <path class="helix-grow" pathLength="100" style="--hdur: 15s" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M0,0 a4,4 0 0 1 4,-4 a4,4 0 0 1 4,4 a8,8 0 0 1 -8,8 a12,12 0 0 1 -12,-12 a20,20 0 0 1 20,-20 a32,32 0 0 1 32,32 a52,52 0 0 1 -52,52" />
+          </g>
+        </g>
+      </g>
+      <g class="traveler t16">
+        <g class="mini-atom" style="--sdur: 24s">
+          <g fill="none" stroke="currentColor" stroke-width="1.3">
+            <ellipse rx="22" ry="8" />
+            <ellipse rx="22" ry="8" transform="rotate(60)" />
+            <ellipse rx="22" ry="8" transform="rotate(-60)" />
+          </g>
+          <circle r="2.6" fill="currentColor" stroke="none" />
+          <g fill="currentColor" stroke="none">
+            <circle cx="22" cy="0" r="1.9" />
+            <circle cx="11" cy="19" r="1.9" />
+            <circle cx="11" cy="-19" r="1.9" />
+          </g>
+        </g>
+      </g>
+      <g class="traveler t17">
+        <g class="mini-atom" style="--sdur: 31s">
+          <g fill="none" stroke="currentColor" stroke-width="1.3">
+            <ellipse rx="22" ry="8" />
+            <ellipse rx="22" ry="8" transform="rotate(60)" />
+            <ellipse rx="22" ry="8" transform="rotate(-60)" />
+          </g>
+          <circle r="2.6" fill="currentColor" stroke="none" />
+          <g fill="currentColor" stroke="none">
+            <circle cx="22" cy="0" r="1.9" />
+            <circle cx="11" cy="19" r="1.9" />
+            <circle cx="11" cy="-19" r="1.9" />
+          </g>
+        </g>
+      </g>
+      <g class="traveler t18">
+        <g class="mini-atom" style="--sdur: 19s">
+          <g fill="none" stroke="currentColor" stroke-width="1.3">
+            <ellipse rx="22" ry="8" />
+            <ellipse rx="22" ry="8" transform="rotate(60)" />
+            <ellipse rx="22" ry="8" transform="rotate(-60)" />
+          </g>
+          <circle r="2.6" fill="currentColor" stroke="none" />
+          <g fill="currentColor" stroke="none">
+            <circle cx="22" cy="0" r="1.9" />
+            <circle cx="11" cy="19" r="1.9" />
+            <circle cx="11" cy="-19" r="1.9" />
+          </g>
+        </g>
+      </g>
+      <g class="traveler t19">
+        <g class="mini-atom" style="--sdur: 42s">
+          <g fill="none" stroke="currentColor" stroke-width="1.3">
+            <ellipse rx="22" ry="8" />
+            <ellipse rx="22" ry="8" transform="rotate(60)" />
+            <ellipse rx="22" ry="8" transform="rotate(-60)" />
+          </g>
+          <circle r="2.6" fill="currentColor" stroke="none" />
+          <g fill="currentColor" stroke="none">
+            <circle cx="22" cy="0" r="1.9" />
+            <circle cx="11" cy="19" r="1.9" />
+            <circle cx="11" cy="-19" r="1.9" />
+          </g>
+        </g>
+      </g>
+      <g class="traveler t20">
+        <g class="mini-atom" style="--sdur: 27s">
+          <g fill="none" stroke="currentColor" stroke-width="1.3">
+            <ellipse rx="22" ry="8" />
+            <ellipse rx="22" ry="8" transform="rotate(60)" />
+            <ellipse rx="22" ry="8" transform="rotate(-60)" />
+          </g>
+          <circle r="2.6" fill="currentColor" stroke="none" />
+          <g fill="currentColor" stroke="none">
+            <circle cx="22" cy="0" r="1.9" />
+            <circle cx="11" cy="19" r="1.9" />
+            <circle cx="11" cy="-19" r="1.9" />
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-linecap="round">
+          <ellipse cx="22" cy="22" rx="19" ry="8" stroke-width="1.4" />
+          <ellipse cx="22" cy="22" rx="19" ry="8" stroke-width="1.4" transform="rotate(60 22 22)" />
+          <ellipse cx="22" cy="22" rx="19" ry="8" stroke-width="1.4" transform="rotate(-60 22 22)" />
+          <circle cx="22" cy="22" r="2.4" fill="currentColor" stroke="none" />
+        </g>
+      </svg>
+      <span class="brand-name">Cyberphysics</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#lectures" class="is-active">Lectures</a>
+      <a href="#token">Token</a>
+      <a href="#docs">Docs</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============ HERO — the atomic age, in glorious black & white ============ -->
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <p class="kicker">In glorious black &amp; white · science fact · 1940 – 1965</p>
+        <h1 class="masthead">Cyber<br />physics</h1>
+        <p class="hero-tagline">Lessons from the golden age of physics — the atomic age,
+          the space age, and the ideas that built them.</p>
+        <p class="hero-body">From quantum electrodynamics to the transistor, the maser,
+          and the fall of parity: twenty-five years when science fact outran science
+          fiction. Presented in black and white, as it happened.</p>
+        <div class="hero-actions">
+          <a class="btn-panel" href="#lectures">Begin the lectures</a>
+          <a class="btn-panel btn-dim" href="#about">About the program</a>
+        </div>
+      </div>
+
+      <figure class="hero-board">
+        <svg class="chalk-anim hero-svg" viewBox="0 0 560 480" role="img"
+             aria-label="Retro-futurist drawing: a bold four-ring atom with orbiting electrons around a lens-like hub, among stars, framed by self-assembling blockchains above and below and growing DNA double helixes on either side, with a composition notebook">
+          <!-- nebula depth -->
+          <g opacity=".14"><ellipse data-write cx="300" cy="230" rx="205" ry="125" fill="url(#g-halo)" /></g>
+          <g opacity=".1"><ellipse data-write cx="150" cy="400" rx="110" ry="70" fill="url(#g-halo)" /></g>
+
+          <!-- field of stars: glowing, a few twinkling -->
+          <g fill="currentColor" stroke="none">
+            <circle data-write class="twinkle" style="--tw: 3.2s" cx="60" cy="52" r="3.4" fill="url(#g-star)" />
+            <circle data-write style="--fo:.5" cx="132" cy="150" r="1.1" />
+            <circle data-write class="twinkle" style="--tw: 4.6s" cx="238" cy="38" r="2.8" fill="url(#g-star)" />
+            <circle data-write style="--fo:.8" cx="520" cy="180" r="3" fill="url(#g-star)" />
+            <circle data-write class="twinkle" style="--tw: 5.4s" cx="500" cy="430" r="3.2" fill="url(#g-star)" />
+            <circle data-write style="--fo:.55" cx="210" cy="440" r="1.3" />
+            <circle data-write style="--fo:.5" cx="48" cy="300" r="1.1" />
+            <circle data-write style="--fo:.55" cx="420" cy="44" r="1.2" />
+            <circle data-write style="--fo:.45" cx="36" cy="424" r="1.1" />
+            <circle data-write style="--fo:.5" cx="528" cy="322" r="1.2" />
+            <circle data-write class="twinkle" style="--tw: 4.1s" cx="68" cy="228" r="2.6" fill="url(#g-star)" />
+            <circle data-write style="--fo:.85" cx="538" cy="248" r="2.9" fill="url(#g-star)" />
+          </g>
+          <!-- diffraction-spike stars -->
+          <g stroke="currentColor" fill="none" stroke-linecap="round">
+            <g class="twinkle" style="--tw: 6s">
+              <circle data-write cx="356" cy="26" r="2.6" fill="url(#g-star)" stroke="none" />
+              <path data-draw d="M356,12 L356,40 M342,26 L370,26" stroke-width="0.9" opacity=".8" />
+            </g>
+            <g opacity=".75">
+              <circle data-write cx="118" cy="176" r="2.2" fill="url(#g-star)" stroke="none" />
+              <path data-draw d="M118,165 L118,187 M107,176 L129,176" stroke-width="0.8" />
+            </g>
+          </g>
+          <g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity=".55">
+            <path data-draw d="M420,44 v8 M416,48 h8" />
+            <path data-draw d="M528,320 v8 M524,324 h8" />
+            <path data-draw d="M36,420 v8 M32,424 h8" />
+          </g>
+          <!-- the atom, after the Cyberphysics logo: bold tubular rings, parked
+               spheres, a lens-like hub — still orbiting, still precessing -->
+          <g class="atom-spin" fill="none" stroke-linecap="round">
+            <!-- chart backdrop -->
+            <circle data-draw cx="300" cy="235" r="185" stroke="#8b8985" stroke-width="1" stroke-dasharray="2 7" opacity=".16" />
+            <!-- ring underglow -->
+            <g opacity=".14" stroke-width="8" filter="url(#soft2)" stroke="#eceae4">
+              <path data-write d="M 455,235 a 155,58 0 1 0 -310,0 a 155,58 0 1 0 310,0" />
+              <path data-write d="M 455,235 a 155,58 0 1 0 -310,0 a 155,58 0 1 0 310,0" transform="rotate(45 300 235)" />
+              <path data-write d="M 455,235 a 155,58 0 1 0 -310,0 a 155,58 0 1 0 310,0" transform="rotate(90 300 235)" />
+              <path data-write d="M 455,235 a 155,58 0 1 0 -310,0 a 155,58 0 1 0 310,0" transform="rotate(135 300 235)" />
+            </g>
+            <g>
+              <path data-write d="M 455,235 a 155,58 0 1 0 -310,0 a 155,58 0 1 0 310,0" stroke="#0b0c0e" stroke-width="8" />
+              <path data-draw id="orb-a" d="M 455,235 a 155,58 0 1 0 -310,0 a 155,58 0 1 0 310,0" stroke="#cfcdc7" stroke-width="5" />
+              <path data-draw d="M 455,235 a 155,58 0 1 0 -310,0 a 155,58 0 1 0 310,0" stroke="#ffffff" stroke-width="1.8" opacity=".85" />
+              <g class="electron">
+                <ellipse cx="-10" cy="0" rx="12" ry="2.4" fill="url(#g-trail)" stroke="none" opacity=".6" />
+                <circle r="8" fill="url(#g-electron)" stroke="none" />
+                <circle r="3" fill="#f8f6f1" stroke="none" />
+                <animateMotion dur="9s" begin="-2s" repeatCount="indefinite" rotate="auto"><mpath href="#orb-a" /></animateMotion>
+              </g>
+            </g>
+            <g transform="rotate(45 300 235)">
+              <path data-write d="M 455,235 a 155,58 0 1 0 -310,0 a 155,58 0 1 0 310,0" stroke="#0b0c0e" stroke-width="8" />
+              <path data-draw id="orb-b" d="M 455,235 a 155,58 0 1 0 -310,0 a 155,58 0 1 0 310,0" stroke="#cfcdc7" stroke-width="5" />
+              <path data-draw d="M 455,235 a 155,58 0 1 0 -310,0 a 155,58 0 1 0 310,0" stroke="#ffffff" stroke-width="1.8" opacity=".85" />
+              <g class="electron">
+                <ellipse cx="-10" cy="0" rx="12" ry="2.4" fill="url(#g-trail)" stroke="none" opacity=".6" />
+                <circle r="8" fill="url(#g-electron)" stroke="none" />
+                <circle r="3" fill="#f8f6f1" stroke="none" />
+                <animateMotion dur="12s" begin="-5s" repeatCount="indefinite" rotate="auto"><mpath href="#orb-b" /></animateMotion>
+              </g>
+            </g>
+            <g transform="rotate(90 300 235)">
+              <path data-write d="M 455,235 a 155,58 0 1 0 -310,0 a 155,58 0 1 0 310,0" stroke="#0b0c0e" stroke-width="8" />
+              <path data-draw id="orb-c" d="M 455,235 a 155,58 0 1 0 -310,0 a 155,58 0 1 0 310,0" stroke="#cfcdc7" stroke-width="5" />
+              <path data-draw d="M 455,235 a 155,58 0 1 0 -310,0 a 155,58 0 1 0 310,0" stroke="#ffffff" stroke-width="1.8" opacity=".85" />
+              <g class="electron">
+                <ellipse cx="-10" cy="0" rx="12" ry="2.4" fill="url(#g-trail)" stroke="none" opacity=".6" />
+                <circle r="8" fill="url(#g-electron)" stroke="none" />
+                <circle r="3" fill="#f8f6f1" stroke="none" />
+                <animateMotion dur="15s" begin="-9s" repeatCount="indefinite" rotate="auto"><mpath href="#orb-c" /></animateMotion>
+              </g>
+            </g>
+            <g transform="rotate(135 300 235)">
+              <path data-write d="M 455,235 a 155,58 0 1 0 -310,0 a 155,58 0 1 0 310,0" stroke="#0b0c0e" stroke-width="8" />
+              <path data-draw id="orb-d" d="M 455,235 a 155,58 0 1 0 -310,0 a 155,58 0 1 0 310,0" stroke="#cfcdc7" stroke-width="5" />
+              <path data-draw d="M 455,235 a 155,58 0 1 0 -310,0 a 155,58 0 1 0 310,0" stroke="#ffffff" stroke-width="1.8" opacity=".85" />
+              <g class="electron">
+                <ellipse cx="-10" cy="0" rx="12" ry="2.4" fill="url(#g-trail)" stroke="none" opacity=".6" />
+                <circle r="8" fill="url(#g-electron)" stroke="none" />
+                <circle r="3" fill="#f8f6f1" stroke="none" />
+                <animateMotion dur="18s" begin="-13s" repeatCount="indefinite" rotate="auto"><mpath href="#orb-d" /></animateMotion>
+              </g>
+            </g>
+            <g stroke="none">
+              <g data-write><circle cx="190" cy="125" r="6.5" fill="#141618" stroke="#d9d7d1" stroke-width="1.2" /><circle cx="187.7" cy="122.4" r="1.4" fill="#ffffff" opacity=".8" /></g>
+              <g data-write><circle cx="159.5" cy="259.5" r="5.5" fill="#141618" stroke="#d9d7d1" stroke-width="1.2" /><circle cx="157.6" cy="257.3" r="1.4" fill="#ffffff" opacity=".8" /></g>
+              <g data-write><circle cx="300" cy="390" r="5" fill="#141618" stroke="#d9d7d1" stroke-width="1.2" /><circle cx="298.2" cy="388.0" r="1.4" fill="#ffffff" opacity=".8" /></g>
+              <circle data-write cx="300" cy="80" r="5" fill="url(#g-sphere)" stroke="#0b0c0e" stroke-width=".8" />
+              <circle data-write cx="410" cy="345" r="4.5" fill="url(#g-sphere)" stroke="#0b0c0e" stroke-width=".8" />
+              <circle data-write cx="410" cy="125" r="3.5" fill="url(#g-sphere)" stroke="#0b0c0e" stroke-width=".8" />
+            </g>
+            <!-- the hub: a lens of concentric rings -->
+            <g>
+              <g opacity=".45"><circle data-write cx="300" cy="235" r="48" fill="url(#g-halo)" stroke="none" /></g>
+              <circle data-write cx="300" cy="235" r="34" fill="#0f1113" stroke="#e9e7e2" stroke-width="1.6" />
+              <circle data-write style="--fo:.8" cx="300" cy="235" r="27" stroke="#6f6d69" stroke-width="1" />
+              <!-- the lock face: numbers dial back and forth like a combination being worked -->
+          <g class="lock-dial">
+              <text class="dial-num" data-write x="300.00" y="215.50" dy="2.4" text-anchor="middle" transform="rotate(0 300.00 215.50)">0</text>
+              <text class="dial-num" data-write x="313.79" y="221.21" dy="2.4" text-anchor="middle" transform="rotate(45 313.79 221.21)">5</text>
+              <text class="dial-num" data-write x="319.50" y="235.00" dy="2.4" text-anchor="middle" transform="rotate(90 319.50 235.00)">10</text>
+              <text class="dial-num" data-write x="313.79" y="248.79" dy="2.4" text-anchor="middle" transform="rotate(135 313.79 248.79)">15</text>
+              <text class="dial-num" data-write x="300.00" y="254.50" dy="2.4" text-anchor="middle" transform="rotate(180 300.00 254.50)">20</text>
+              <text class="dial-num" data-write x="286.21" y="248.79" dy="2.4" text-anchor="middle" transform="rotate(225 286.21 248.79)">25</text>
+              <text class="dial-num" data-write x="280.50" y="235.00" dy="2.4" text-anchor="middle" transform="rotate(270 280.50 235.00)">30</text>
+              <text class="dial-num" data-write x="286.21" y="221.21" dy="2.4" text-anchor="middle" transform="rotate(315 286.21 221.21)">35</text>
+              <path data-draw d="M306.1,220.2 L307.1,217.9 M314.8,228.9 L317.1,227.9 M314.8,241.1 L317.1,242.1 M306.1,249.8 L307.1,252.1 M293.9,249.8 L292.9,252.1 M285.2,241.1 L282.9,242.1 M285.2,228.9 L282.9,227.9 M293.9,220.2 L292.9,217.9" fill="none" stroke="#6f6d69" stroke-width=".8" opacity=".6" />
+          </g>
+          <path data-write style="--fo:.9" d="M297.4,209.5 h5.2 L300,215 Z" fill="#f6f4ef" stroke="none" />
+              <circle data-write style="--fo:.9" cx="300" cy="235" r="12" stroke="#cfcdc7" stroke-width="1.2" />
+              <path data-draw d="M329.0,235.0 L333.5,235.0 M325.1,249.5 L329.0,251.8 M314.5,260.1 L316.8,264.0 M300.0,264.0 L300.0,268.5 M285.5,260.1 L283.2,264.0 M274.9,249.5 L271.0,251.8 M271.0,235.0 L266.5,235.0 M274.9,220.5 L271.0,218.2 M285.5,209.9 L283.2,206.0 M300.0,206.0 L300.0,201.5 M314.5,209.9 L316.8,206.0 M325.1,220.5 L329.0,218.2" stroke="#8b8985" stroke-width=".9" opacity=".55" />
+              <path data-write style="--fo:.3" d="M269.5,229.6 A31,31 0 0 1 284.5,208.2" stroke="#ffffff" stroke-width="2" />
+              <circle data-write cx="300" cy="235" r="3.2" fill="#f6f4ef" stroke="none" />
+            </g>
+          </g>
+
+          <!-- the motif frame: chains above and below, helixes on the flanks,
+               assembling clockwise around the atom -->
+          <g data-write style="--cdur: 18s; --cstep: 0.7s; --gdel: 0s" stroke="rgba(236,234,228,0.35)" stroke-width=".7" stroke-linejoin="round">
+            <g fill="none" stroke="rgba(236,234,228,0.5)" stroke-dasharray="4 4" stroke-width="1.3">
+              <path class="bc-link" style="--ci:0" d="M80,58 L135,58" />
+              <path class="bc-link" style="--ci:1" d="M135,58 L190,58" />
+              <path class="bc-link" style="--ci:2" d="M190,58 L245,58" />
+              <path class="bc-link" style="--ci:3" d="M245,58 L300,58" />
+              <path class="bc-link" style="--ci:4" d="M300,58 L355,58" />
+              <path class="bc-link" style="--ci:5" d="M355,58 L410,58" />
+              <path class="bc-link" style="--ci:6" d="M410,58 L465,58" />
+              <path class="bc-link" style="--ci:7" d="M465,58 L520,58" />
+            </g>
+            <g transform="translate(80,58)"><g class="bc-cube" style="--ci:0">
+              <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+              <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+              <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+            </g></g>
+            <g transform="translate(135,58)"><g class="bc-cube" style="--ci:1">
+              <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+              <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+              <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+            </g></g>
+            <g transform="translate(190,58)"><g class="bc-cube" style="--ci:2">
+              <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+              <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+              <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+            </g></g>
+            <g transform="translate(245,58)"><g class="bc-cube" style="--ci:3">
+              <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+              <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+              <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+            </g></g>
+            <g transform="translate(300,58)"><g class="bc-cube" style="--ci:4">
+              <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+              <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+              <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+            </g></g>
+            <g transform="translate(355,58)"><g class="bc-cube" style="--ci:5">
+              <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+              <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+              <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+            </g></g>
+            <g transform="translate(410,58)"><g class="bc-cube" style="--ci:6">
+              <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+              <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+              <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+            </g></g>
+            <g transform="translate(465,58)"><g class="bc-cube" style="--ci:7">
+              <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+              <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+              <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+            </g></g>
+            <g transform="translate(520,58)"><g class="bc-cube" style="--ci:8">
+              <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+              <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+              <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+            </g></g>
+          </g>
+          <g data-write transform="translate(530,88) rotate(90)" style="--hdur: 18s; --rstep: 0.9s; --gdel: 2s">
+            <g fill="none" stroke="currentColor" stroke-linecap="round">
+              <path class="helix-grow" pathLength="100" d="M0,0 q13.75,-15 27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0" stroke-width="1.7" />
+              <path class="helix-grow" pathLength="100" d="M0,0 q13.75,15 27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0" stroke-width="1.4" />
+              <path class="helix-rung" style="--i:0" d="M13.75,-6.5 L13.75,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:1" d="M41.25,-6.5 L41.25,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:2" d="M68.75,-6.5 L68.75,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:3" d="M96.25,-6.5 L96.25,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:4" d="M123.75,-6.5 L123.75,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:5" d="M151.25,-6.5 L151.25,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:6" d="M178.75,-6.5 L178.75,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:7" d="M206.25,-6.5 L206.25,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:8" d="M233.75,-6.5 L233.75,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:9" d="M261.25,-6.5 L261.25,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:10" d="M288.75,-6.5 L288.75,6.5" stroke-width="1.3" />
+            </g>
+          </g>
+          <g data-write style="--cdur: 18s; --cstep: 0.7s; --gdel: 4s" stroke="rgba(236,234,228,0.35)" stroke-width=".7" stroke-linejoin="round">
+            <g fill="none" stroke="rgba(236,234,228,0.5)" stroke-dasharray="4 4" stroke-width="1.3">
+              <path class="bc-link" style="--ci:0" d="M520,412 L465,412" />
+              <path class="bc-link" style="--ci:1" d="M465,412 L410,412" />
+              <path class="bc-link" style="--ci:2" d="M410,412 L355,412" />
+              <path class="bc-link" style="--ci:3" d="M355,412 L300,412" />
+              <path class="bc-link" style="--ci:4" d="M300,412 L245,412" />
+              <path class="bc-link" style="--ci:5" d="M245,412 L190,412" />
+              <path class="bc-link" style="--ci:6" d="M190,412 L135,412" />
+              <path class="bc-link" style="--ci:7" d="M135,412 L80,412" />
+            </g>
+            <g transform="translate(520,412)"><g class="bc-cube" style="--ci:0">
+              <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+              <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+              <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+            </g></g>
+            <g transform="translate(465,412)"><g class="bc-cube" style="--ci:1">
+              <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+              <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+              <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+            </g></g>
+            <g transform="translate(410,412)"><g class="bc-cube" style="--ci:2">
+              <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+              <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+              <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+            </g></g>
+            <g transform="translate(355,412)"><g class="bc-cube" style="--ci:3">
+              <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+              <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+              <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+            </g></g>
+            <g transform="translate(300,412)"><g class="bc-cube" style="--ci:4">
+              <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+              <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+              <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+            </g></g>
+            <g transform="translate(245,412)"><g class="bc-cube" style="--ci:5">
+              <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+              <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+              <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+            </g></g>
+            <g transform="translate(190,412)"><g class="bc-cube" style="--ci:6">
+              <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+              <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+              <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+            </g></g>
+            <g transform="translate(135,412)"><g class="bc-cube" style="--ci:7">
+              <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+              <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+              <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+            </g></g>
+            <g transform="translate(80,412)"><g class="bc-cube" style="--ci:8">
+              <path d="M0,-10 L9,-5 L0,0 L-9,-5 Z" fill="#dcdad4" />
+              <path d="M-9,-5 L0,0 L0,10 L-9,5 Z" fill="#8f8d88" />
+              <path d="M0,0 L9,-5 L9,5 L0,10 Z" fill="#45433f" />
+            </g></g>
+          </g>
+          <g data-write transform="translate(75,392) rotate(-90)" style="--hdur: 18s; --rstep: 0.9s; --gdel: 6s">
+            <g fill="none" stroke="currentColor" stroke-linecap="round">
+              <path class="helix-grow" pathLength="100" d="M0,0 q13.75,-15 27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0" stroke-width="1.7" />
+              <path class="helix-grow" pathLength="100" d="M0,0 q13.75,15 27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0 t27.5,0" stroke-width="1.4" />
+              <path class="helix-rung" style="--i:0" d="M13.75,-6.5 L13.75,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:1" d="M41.25,-6.5 L41.25,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:2" d="M68.75,-6.5 L68.75,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:3" d="M96.25,-6.5 L96.25,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:4" d="M123.75,-6.5 L123.75,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:5" d="M151.25,-6.5 L151.25,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:6" d="M178.75,-6.5 L178.75,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:7" d="M206.25,-6.5 L206.25,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:8" d="M233.75,-6.5 L233.75,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:9" d="M261.25,-6.5 L261.25,6.5" stroke-width="1.3" />
+              <path class="helix-rung" style="--i:10" d="M288.75,-6.5 L288.75,6.5" stroke-width="1.3" />
+            </g>
+          </g>
+
+          <!-- the composition notebook → NotebookLM -->
+          <a class="notebook-link" href="https://notebooklm.google.com/notebook/6486b26c-946a-4840-a5a7-368c3891a54c"
+             target="_blank" rel="noopener" aria-label="Open the Cyberphysics notebook on NotebookLM (opens in a new tab)">
+            <title>Open the Cyberphysics notebook</title>
+            <g transform="translate(345,430) scale(.58)">
+              <g class="nb">
+                <rect data-write x="0" y="0" width="54" height="70" rx="3" fill="#17191b" stroke="currentColor" stroke-width="1.5" />
+                <rect data-write x="1" y="1" width="52" height="68" rx="2.5" fill="none" stroke="none" filter="url(#marble)" />
+                <rect data-write x="1" y="1" width="52" height="68" rx="2.5" fill="url(#g-sheen)" stroke="none" />
+                <path data-draw d="M50.6,4 L50.6,66 M52.2,6 L52.2,64" fill="none" stroke="#c9c7c1" stroke-width="0.6" opacity=".7" />
+                <rect data-write x="0" y="0" width="8" height="70" rx="2" fill="#0b0c0d" stroke="currentColor" stroke-width="1" opacity=".95" />
+                <rect data-write x="14" y="21" width="33" height="26" rx="1.5" fill="#e2e0da" stroke="#3a3c3e" stroke-width="1" />
+                <g class="nb-label" fill="#2c2e30" stroke="none">
+                  <text data-write x="30.5" y="32" text-anchor="middle">FIELD</text>
+                  <text data-write x="30.5" y="41" text-anchor="middle">NOTES</text>
+                </g>
+                <path data-draw d="M18,44 h25" stroke="#3a3c3e" stroke-width="0.8" fill="none" />
+              </g>
+            </g>
+            <g class="nb-caption" fill="currentColor" stroke="none" opacity=".8">
+              <text data-write x="384" y="460">THE NOTEBOOK →</text>
+            </g>
+          </a>
+
+          <!-- caption -->
+          <g class="svg-type" fill="currentColor" stroke="none" opacity=".7">
+            <text data-write x="225" y="466" text-anchor="middle">FIG. 1 · THE ATOMIC AGE</text>
+          </g>
+        </svg>
+        <p class="scroll-cue" aria-hidden="true">scroll ↓</p>
+        <figcaption class="sr-only">A bold four-ring atom with orbiting electrons and a lens-like hub, among stars, framed by self-assembling chains of linked blocks above and below and DNA double helixes growing along either side, with a composition notebook that opens the Cyberphysics NotebookLM notebook.</figcaption>
+      </figure>
+    </section>
+
+    <!-- oscilloscope divider -->
+    <div class="rule-scope" aria-hidden="true">
+      <svg viewBox="0 0 1200 24" preserveAspectRatio="none">
+        <path class="scope-base" d="M0,12 q30,-18 60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0"
+              fill="none" stroke="currentColor" stroke-width="1.4" />
+        <path class="scope-pulse" d="M0,12 q30,-18 60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0"
+              fill="none" stroke="currentColor" stroke-width="1.8" />
+      </svg>
+    </div>
+
+    <!-- ============ LECTURES — the blackboard, kept as an object ============ -->
+    <section class="lectures" id="lectures">
+      <header class="section-head reveal">
+        <p class="kicker">Our feature presentation</p>
+        <h2>This term at the board</h2>
+      </header>
+
+      <div class="blackboard reveal">
+        <p class="board-note chalk-hand">— sample lectures; the full archive is on its way</p>
+
+        <div class="card-grid">
+          <article class="card">
+            <p class="card-plate">Lecture № 001 · 1948</p>
+            <svg class="card-sketch chalk-anim" viewBox="0 0 140 96" aria-hidden="true">
+              <g filter="url(#chalk-fine)" fill="none" stroke="currentColor" stroke-linecap="round">
+                <path data-draw d="M16,18 L54,48 M16,78 L54,48" stroke-width="1.8" />
+                <path data-draw d="M54,48 q5,-9 10,0 t10,0 t10,0" stroke-width="1.6" />
+                <path data-draw d="M84,48 L122,18 M84,48 L122,78" stroke-width="1.8" />
+                <circle data-draw cx="54" cy="48" r="2.2" fill="currentColor" stroke="none" />
+                <circle data-draw cx="84" cy="48" r="2.2" fill="currentColor" stroke="none" />
+              </g>
+            </svg>
+            <h3>Diagrams for Electrodynamics</h3>
+            <p>How Feynman turned the infinities of QED into pictures you can compute with —
+              the notation that reorganized a science.</p>
+            <a class="card-link chalk-hand" href="#">watch the lesson →</a>
+          </article>
+
+          <article class="card">
+            <p class="card-plate">Lecture № 002 · 1947</p>
+            <svg class="card-sketch chalk-anim" viewBox="0 0 140 96" aria-hidden="true">
+              <g filter="url(#chalk-fine)" fill="none" stroke="currentColor" stroke-linecap="round">
+                <circle data-draw cx="70" cy="48" r="26" stroke-width="1.8" />
+                <path data-draw d="M58,34 L58,62 M30,48 L58,48" stroke-width="1.8" />
+                <path data-draw d="M58,42 L84,26 M58,54 L84,70 M76,66 l8,4 l-3,-9" stroke-width="1.8" />
+              </g>
+            </svg>
+            <h3>Three Terminals of Germanium</h3>
+            <p>Bardeen, Brattain, and the point-contact transistor — the Bell Labs experiment
+              that put an amplifier on a speck of crystal.</p>
+            <a class="card-link chalk-hand" href="#">watch the lesson →</a>
+          </article>
+
+          <article class="card">
+            <p class="card-plate">Lecture № 003 · 1957</p>
+            <svg class="card-sketch chalk-anim" viewBox="0 0 140 96" aria-hidden="true">
+              <g filter="url(#chalk-fine)" fill="none" stroke="currentColor" stroke-linecap="round">
+                <path data-draw d="M70,10 L70,86" stroke-width="1.4" stroke-dasharray="5 6" />
+                <circle data-draw cx="38" cy="52" r="12" stroke-width="1.8" />
+                <path data-draw d="M38,38 L38,18 M33,24 L38,17 L43,24" stroke-width="1.8" />
+                <circle data-draw cx="102" cy="52" r="12" stroke-width="1.8" />
+                <path data-draw d="M102,66 L102,86 M97,80 L102,87 L107,80" stroke-width="1.8" />
+                <path data-draw d="M88,24 L116,44 M116,24 L88,44" stroke-width="1.6" opacity=".8" />
+              </g>
+            </svg>
+            <h3>The Fall of Parity</h3>
+            <p>Lee and Yang ask the forbidden question; Wu's cobalt-60 answers it. The mirror
+              is broken, and the weak force is never the same.</p>
+            <a class="card-link chalk-hand" href="#">watch the lesson →</a>
+          </article>
+
+          <article class="card">
+            <p class="card-plate">Lecture № 004 · 1960</p>
+            <svg class="card-sketch chalk-anim" viewBox="0 0 140 96" aria-hidden="true">
+              <g filter="url(#chalk-fine)" fill="none" stroke="currentColor" stroke-linecap="round">
+                <path data-draw d="M22,24 L74,24 M22,50 L74,50 M22,76 L74,76" stroke-width="1.8" />
+                <path data-draw d="M40,26 L40,48 M35,42 L40,49 L45,42" stroke-width="1.6" />
+                <path data-draw d="M58,52 L58,74 M53,68 L58,75 L63,68" stroke-width="1.6" />
+                <path data-draw d="M80,62 q5,-8 10,0 t10,0 t10,0" stroke-width="1.6" />
+                <path data-draw d="M112,62 L128,62 M122,57 L129,62 L122,67" stroke-width="1.6" />
+              </g>
+            </svg>
+            <h3>Light, Amplified</h3>
+            <p>From Townes's ammonia maser to Maiman's ruby flash — stimulated emission goes
+              from a footnote in Einstein to a beam you can see.</p>
+            <a class="card-link chalk-hand" href="#">watch the lesson →</a>
+          </article>
+        </div>
+
+        <div class="tray" aria-hidden="true">
+          <span class="chalk-stick"></span>
+          <span class="chalk-stick chalk-stick--short"></span>
+          <span class="eraser"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- oscilloscope divider -->
+    <div class="rule-scope" aria-hidden="true">
+      <svg viewBox="0 0 1200 24" preserveAspectRatio="none">
+        <path class="scope-base" d="M0,12 q30,18 60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0"
+              fill="none" stroke="currentColor" stroke-width="1.4" />
+        <path class="scope-pulse" d="M0,12 q30,18 60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0"
+              fill="none" stroke="currentColor" stroke-width="1.8" />
+      </svg>
+    </div>
+
+    <!-- ============ TRANSMISSIONS — token & docs ============ -->
+    <section class="transmissions">
+      <div class="panel reveal" id="token">
+        <p class="panel-stamp">Transmission pending</p>
+        <svg class="panel-icon chalk-anim" viewBox="0 0 64 64" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <circle data-draw cx="32" cy="32" r="15" />
+            <ellipse data-draw cx="32" cy="32" rx="28" ry="9" transform="rotate(-22 32 32)" opacity=".85" />
+            <circle data-draw cx="32" cy="32" r="3" fill="currentColor" stroke="none" />
+          </g>
+        </svg>
+        <h3>The Token</h3>
+        <p>The research instrument of the blockspace continuum. Full dossier to follow
+          on this frequency.</p>
+      </div>
+      <div class="panel reveal" id="docs">
+        <p class="panel-stamp">Transmission pending</p>
+        <svg class="panel-icon chalk-anim" viewBox="0 0 64 64" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <rect data-draw x="16" y="10" width="32" height="44" rx="2" />
+            <path data-draw d="M23,22 h18 M23,30 h18 M23,38 h12" opacity=".85" />
+            <circle data-draw cx="41" cy="46" r="4" opacity=".85" />
+          </g>
+        </svg>
+        <h3>The Docs</h3>
+        <p>Field notes, papers, and program documentation — the fine print behind
+          the feature.</p>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="about" id="about">
+      <div class="about-inner reveal">
+        <p class="about-stamp" aria-hidden="true">Science fact</p>
+        <p class="kicker">From the program notes</p>
+        <h2>Why the blackboard?</h2>
+        <p class="about-lede">Because that is where this physics actually happened.</p>
+        <p>Between 1940 and 1965, physics was argued into existence at the board — at
+          Los Alamos and Bell Labs, at Shelter Island and Copenhagen. The blackboard was
+          the era's native medium: slow enough to think with, public enough to be
+          challenged. This archive teaches that physics in its own dialect — chalk lines,
+          hand-drawn diagrams, and derivations you can follow stroke by stroke.</p>
+        <p class="about-note"><span class="note-flash">It came from the blockspace!</span>
+          Cyberphysics pairs this classical archive with its research on blockchain-based
+          AI self-models — the physics of mind. The lessons here are the foundations that
+          work stands on.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER — end credits ============ -->
+  <footer class="site-footer">
+    <div class="film-strip" aria-hidden="true"></div>
+    <div class="credits">
+      <p class="the-end">The End</p>
+      <p class="end-tease">… or only the beginning?</p>
+    </div>
+    <div class="footer-row">
+      <p class="footer-brand">Cyberphysics · est. in the blockspace continuum</p>
+      <p class="footer-contact">
+        <a href="mailto:cyberphysicsai@gmail.com">cyberphysicsai@gmail.com</a>
+        <span aria-hidden="true"> · </span>
+        <a href="mailto:cyberphysicsai@proton.me">cyberphysicsai@proton.me</a>
+      </p>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>
