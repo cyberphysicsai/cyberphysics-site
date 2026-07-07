@@ -406,18 +406,29 @@ main { position: relative; z-index: 2; }
 .lock-dial {
   transform-box: view-box;
   transform-origin: 300px 235px;
-  animation: lock-dial 14s ease-in-out infinite;
+  animation: lock-dial 16s ease-in-out infinite;
 }
 
+/* the combination always resolves to 42: rest angle 45° parks the 42 label
+   (at 315° on the face) squarely under the index pointer */
 @keyframes lock-dial {
-  0%   { transform: rotate(0deg); }
-  16%  { transform: rotate(135deg); }
-  24%  { transform: rotate(135deg); }
-  46%  { transform: rotate(-90deg); }
-  54%  { transform: rotate(-90deg); }
-  76%  { transform: rotate(225deg); }
-  84%  { transform: rotate(225deg); }
-  100% { transform: rotate(360deg); }
+  0%   { transform: rotate(45deg); }
+  12%  { transform: rotate(45deg); }
+  30%  { transform: rotate(-260deg); }
+  38%  { transform: rotate(-260deg); }
+  58%  { transform: rotate(180deg); }
+  66%  { transform: rotate(180deg); }
+  88%  { transform: rotate(405deg); }
+  100% { transform: rotate(405deg); }
+}
+
+/* the pointer brightens when the dial lands on 42 */
+.dial-flash { animation: dial-flash 16s ease-in-out infinite; }
+
+@keyframes dial-flash {
+  0%, 12%    { opacity: 1; }
+  30%, 66%   { opacity: 0.4; }
+  88%, 100%  { opacity: 1; }
 }
 
 /* ---- chalk text: words materialize onto the slate as you scroll ----
@@ -1076,7 +1087,8 @@ h2 {
   .chalk-anim.on .bc-link { animation: none; opacity: 1; }
   .spiral-spin { animation: none; }
   .mini-atom { animation: none; }
-  .lock-dial { animation: none; }
+  .lock-dial { animation: none; transform: rotate(45deg); } /* rests on 42 */
+  .dial-flash { animation: none; }
   .ambient-field { display: none; }
 }
 
