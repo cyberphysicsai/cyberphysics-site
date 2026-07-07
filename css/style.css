@@ -402,12 +402,20 @@ main { position: relative; z-index: 2; }
   to   { transform: rotate(360deg); }
 }
 
-/* ---- tiny ambient atoms: the whole rosette spins, dots ride the rings ---- */
+/* ---- tiny ambient atoms: the rosette precesses while particles circulate ---- */
 
 .mini-atom {
   transform-box: fill-box;
   transform-origin: center;
   animation: spiral-spin var(--sdur, 30s) linear infinite;
+}
+
+/* opposed dot pairs keep the rig's fill-box centered on the atom,
+   so rotation traces the squashed orbit exactly */
+.dot-spin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: spiral-spin var(--ddur, 5s) linear infinite;
 }
 
 /* ---- the hub's lock face: dialing a combination, forever ---- */
