@@ -271,8 +271,55 @@ main { position: relative; z-index: 2; }
   min-width: 0;
   min-height: calc(100dvh - 12px);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 0.4rem;
+}
+
+/* the open-source suite, chalked under the plate */
+.git-suite {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  margin-bottom: 0.8rem;
+}
+
+.git-cat {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  color: var(--chalk-dim);
+  transition: color 250ms ease, filter 250ms ease, transform 250ms ease;
+}
+
+.git-suite-text {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--chalk);
+  border-bottom: 1.5px dashed var(--chalk-faint);
+  padding-bottom: 0.05em;
+  transition: color 250ms ease, text-shadow 250ms ease, border-color 250ms ease;
+}
+
+.git-suite:hover .git-cat,
+.git-suite:focus-visible .git-cat {
+  color: #ffffff;
+  filter: drop-shadow(0 0 9px rgba(236, 234, 228, 0.8));
+  transform: rotate(-6deg);
+}
+
+.git-suite:hover .git-suite-text,
+.git-suite:focus-visible .git-suite-text {
+  color: #ffffff;
+  text-shadow: 0 0 14px rgba(255, 255, 255, 0.4);
+  border-color: var(--chalk);
+}
+
+.git-suite:focus-visible {
+  outline: 1.5px dashed var(--chalk);
+  outline-offset: 5px;
 }
 
 .hero-svg {
