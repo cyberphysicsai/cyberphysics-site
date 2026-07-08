@@ -122,3 +122,29 @@ setTimeout(() => {
       .forEach((el) => el.classList.add("on"));
   }
 }, 2500);
+
+// Perpetual fallback: observers can also die mid-session in throttled contexts,
+// leaving below-fold content hidden. After each scroll settles, reveal anything
+// already inside the viewport that the observer missed.
+function revealVisible() {
+  const vh =
+    Math.max(window.innerHeight, document.documentElement.clientHeight) || 800;
+  document
+    .querySelectorAll("svg.chalk-anim:not(.on), .reveal:not(.on), .txt-mat:not(.on)")
+    .forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh * 0.96 && r.bottom > 0) el.classList.add("on");
+    });
+}
+
+if (!reducedMotion) {
+  let fallbackTick = null;
+  window.addEventListener(
+    "scroll",
+    () => {
+      clearTimeout(fallbackTick);
+      fallbackTick = setTimeout(revealVisible, 180);
+    },
+    { passive: true }
+  );
+}
