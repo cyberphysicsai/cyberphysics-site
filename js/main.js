@@ -31,7 +31,7 @@ const MAT_TARGETS = [
   ".brand-name", ".site-nav a", ".kicker", ".masthead-sub", ".hero-tagline", ".hero-body",
   ".btn-panel", ".section-head h2", ".board-note", ".card-plate",
   ".card h3", ".card p", ".card-link", ".panel-stamp", ".panel h3",
-  ".panel p", ".about-stamp", ".about h2", ".about-lede", ".about p",
+  ".panel p", ".about-stamp", ".about h2", ".about h3", ".about-lede", ".about p",
   ".the-end", ".end-tease", ".footer-brand", ".footer-contact",
 ];
 

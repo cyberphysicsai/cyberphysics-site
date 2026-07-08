@@ -950,6 +950,21 @@ h2 {
 
 .about h2 { margin-bottom: 0.4rem; }
 
+.about h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.02rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--starlight);
+  margin: 2.1rem 0 0.7rem;
+}
+
+.about p strong {
+  color: var(--starlight);
+  font-weight: 700;
+}
+
 .about-lede {
   font-family: var(--font-serif);
   font-style: italic;
