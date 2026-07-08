@@ -1088,6 +1088,19 @@ h2 {
   outline-offset: 3px;
 }
 
+/* the second set, riding under the nav */
+.social-row--top {
+  width: 100%;
+  justify-content: center;
+  gap: clamp(0.55rem, 1.6vw, 1rem);
+  padding: 0.4rem 0 0;
+}
+
+.social-row--top .social-link svg {
+  width: 26px;
+  height: 26px;
+}
+
 /* ============================================================
    MOTION
    ============================================================ */
