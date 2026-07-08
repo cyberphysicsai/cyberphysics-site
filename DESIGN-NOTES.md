@@ -148,9 +148,12 @@ full static page; JS + motion → things draw, assemble, travel.**
 
 ## Pending / next
 
-- **Lecture cards are labeled samples** — awaiting real YouTube links, then a
-  lecture detail template (board-framed embed + chalk transcript).
-- **Docs panel** still "Transmission pending".
+- **Lecture cards are real now** — all four wired to X video posts
+  (@MuseRhymes) with real titles and subject-matched chalk sketches
+  (timechain vectors, modality matrix, token balance scale, ARC grid pair).
+  A lecture detail template (board-framed embed + chalk transcript) remains
+  a candidate.
+- **Docs panel** carries the Architect's Field Guide link; deeper docs pending.
 - Candidate: GitHub Pages deploy (static build via `npm run build`).
 
 ## Working conventions
