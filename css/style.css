@@ -1055,6 +1055,39 @@ h2 {
 .footer-contact a { color: var(--silver); text-decoration: none; }
 .footer-contact a:hover { color: var(--starlight); }
 
+/* the channels, chalked */
+.social-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(0.7rem, 2vw, 1.15rem);
+  padding: 0 var(--pad) 2rem;
+}
+
+.social-link {
+  display: inline-flex;
+  color: var(--gray);
+  transition: color 200ms ease, filter 200ms ease, transform 200ms ease;
+}
+
+.social-link svg {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+.social-link:hover,
+.social-link:focus-visible {
+  color: #ffffff;
+  filter: drop-shadow(0 0 8px rgba(236, 234, 228, 0.7));
+  transform: translateY(-2px);
+}
+
+.social-link:focus-visible {
+  outline: 1.5px dashed var(--starlight);
+  outline-offset: 3px;
+}
+
 /* ============================================================
    MOTION
    ============================================================ */
@@ -1268,6 +1301,7 @@ h2 {
 @media (max-width: 560px) {
   .site-header { justify-content: center; }
   .footer-row { justify-content: center; text-align: center; }
+  .social-row { justify-content: center; }
   .panel-stamp { position: static; display: inline-block; margin-bottom: 0.9rem; }
   .about-stamp { position: static; display: inline-block; margin-bottom: 0.9rem; }
 }
