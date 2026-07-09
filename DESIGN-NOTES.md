@@ -47,12 +47,14 @@ Four Google Fonts, each with a job:
 2. **Ambient field** — fixed, full-viewport, pointer-events none, `z` between the
    grain and content. 20 travelers (see below).
 3. **Header** — absolute over the hero stage. Nav ends with the bordered
-   `.nav-cta` "Acquire CPHY" pill → `#token`.
+   `.nav-cta` "Acquire CPHY" pill → `#token` (no separate Token tab — the pill
+   covers it). A second, smaller social-glyph row rides beneath the tabs.
 4. **Hero** — FIG. 1 fills the whole first viewport (`.hero-board`, 100dvh flex
-   stage); the copy block (kicker → masthead → subheader → mission tagline →
-   CTAs) sits below the fold. A bobbing typewriter "scroll ↓" cue marks the fold.
-5. **Lectures** — the blackboard object: four sample lecture cards (placeholders
-   awaiting real YouTube links), the chalk Uniswap buy button, the chalk tray.
+   column); the chalk Octocat "Open-source Git suite" link sits centered under
+   the plate; the copy block (kicker → masthead → subheader → mission tagline →
+   CTAs) sits below the fold.
+5. **Lectures** — the blackboard object: four lecture cards wired to X video
+   posts with subject-matched sketches, the chalk Uniswap buy button, the tray.
 6. **Transmissions** — Token panel ("Now transmitting", Virtuals acquire link with
    the chalk-traced Virtuals swallow) and Docs panel (still pending).
 7. **About** — halftone "Science fact" panel.

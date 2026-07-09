@@ -277,12 +277,15 @@ main { position: relative; z-index: 2; }
   gap: 0.4rem;
 }
 
-/* the open-source suite, chalked under the plate */
+/* the open-source suite, chalked under the plate — full row, always centered */
 .git-suite {
-  display: inline-flex;
+  display: flex;
+  width: 100%;
   align-items: center;
+  justify-content: center;
   gap: 0.7rem;
   text-decoration: none;
+  color: var(--chalk-dim);
   margin-bottom: 0.8rem;
 }
 
@@ -330,24 +333,6 @@ main { position: relative; z-index: 2; }
   filter: drop-shadow(0 0 18px rgba(236, 234, 228, 0.08));
 }
 
-.scroll-cue {
-  position: absolute;
-  bottom: 1.1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0;
-  font-family: var(--font-type);
-  font-size: 0.68rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--gray);
-  animation: cue-bob 2.4s ease-in-out infinite;
-}
-
-@keyframes cue-bob {
-  0%, 100% { transform: translate(-50%, 0); opacity: 0.65; }
-  50%      { transform: translate(-50%, 6px); opacity: 1; }
-}
 
 .svg-type text {
   font-family: var(--font-type);
@@ -1336,7 +1321,6 @@ h2 {
   .drift { animation: none; }
   .atom-spin { animation: none; }
   .twinkle { animation: none; }
-  .scroll-cue { animation: none; }
   .chalk-anim.on .helix-grow {
     animation: none;
     stroke-dasharray: none;
@@ -1356,12 +1340,21 @@ h2 {
 
 @media (max-width: 880px) {
   .masthead { font-size: clamp(2.2rem, 9.5vw, 4rem); }
+  /* hug the plate so the Git suite link sits right beneath it */
+  .hero-svg {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 560 / 480;
+    max-height: calc(100dvh - 11rem);
+  }
 }
 
 @media (max-width: 560px) {
   .site-header { justify-content: center; }
   .footer-row { justify-content: center; text-align: center; }
   .social-row { justify-content: center; }
+  .git-cat { width: 38px; height: 38px; }
+  .git-suite-text { font-size: 1.4rem; }
   .panel-stamp { position: static; display: inline-block; margin-bottom: 0.9rem; }
   .about-stamp { position: static; display: inline-block; margin-bottom: 0.9rem; }
 }
