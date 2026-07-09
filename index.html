@@ -23,6 +23,10 @@
         <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="11" result="noise" />
         <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
       </filter>
+      <filter id="chalk-hair" x="-10%" y="-10%" width="120%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="13" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.9" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
       <!-- white speckle on black: the marbled cover of a composition notebook -->
       <filter id="marble" x="0%" y="0%" width="100%" height="100%">
         <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="3" seed="9" result="n" />
@@ -954,21 +958,15 @@
           <a class="git-link" href="https://github.com/cyberphysicsai" target="_blank" rel="noopener"
              aria-label="Cyberphysics open-source Git suite on GitHub (opens in a new tab)">
             <title>Open the Cyberphysics Git suite on GitHub</title>
-            <g transform="translate(172,496)">
-              <g filter="url(#chalk-fine)" fill="none" stroke="#d9d7d1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path data-draw d="M-15,5 C-16,-4 -13,-11 -7,-13 L-4,-18 L-1,-13 L1,-13 L4,-18 L7,-13 C13,-11 16,-4 15,5 C14,12 8,16 0,16 C-8,16 -14,12 -15,5 Z" />
-                <path data-draw d="M-2,6 q2,2.4 4,0" stroke-width="1.4" />
-                <path data-draw d="M-8,15 C-10,20 -4,22 -2,18" stroke-width="1.6" />
-              </g>
-              <g fill="#d9d7d1" stroke="none">
-                <circle data-write cx="-5.5" cy="-2" r="1.8" />
-                <circle data-write cx="5.5" cy="-2" r="1.8" />
+            <g transform="translate(154,478) scale(1.6)">
+              <g filter="url(#chalk-hair)" fill="none" stroke="#d9d7d1" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round">
+                <path data-draw d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
               </g>
             </g>
             <text data-write x="200" y="501" font-family="'Special Elite', 'Courier New', monospace" font-size="11" letter-spacing="2.2" fill="#cfcdc7">OPEN-SOURCE GIT SUITE →</text>
           </a>
         </svg>
-        <figcaption class="sr-only">A bold four-ring atom with orbiting electrons and a lens-like hub, among stars, framed by self-assembling chains of linked blocks above and below and DNA double helixes growing along either side, with a composition notebook — the Architect's Field Guide — that opens the Cyberphysics NotebookLM notebook, and a hand-drawn GitHub Octocat that opens the open-source Git suite.</figcaption>
+        <figcaption class="sr-only">A bold four-ring atom with orbiting electrons and a lens-like hub, among stars, framed by self-assembling chains of linked blocks above and below and DNA double helixes growing along either side, with a composition notebook — the Architect's Field Guide — that opens the Cyberphysics NotebookLM notebook, and a chalk-drawn GitHub Octocat that opens the open-source Git suite.</figcaption>
       </figure>
     </section>
 
