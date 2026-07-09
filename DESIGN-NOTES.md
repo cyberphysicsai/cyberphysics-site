@@ -50,9 +50,10 @@ Four Google Fonts, each with a job:
    `.nav-cta` "Acquire CPHY" pill → `#token` (no separate Token tab — the pill
    covers it). A second, smaller social-glyph row rides beneath the tabs.
 4. **Hero** — FIG. 1 fills the whole first viewport (`.hero-board`, 100dvh flex
-   column); the chalk Octocat "Open-source Git suite" link sits centered under
-   the plate; the copy block (kicker → masthead → subheader → mission tagline →
-   CTAs) sits below the fold.
+   column, viewBox `0 0 560 520`); the hand-drawn chalk Octocat "Open-source
+   Git suite" link lives *inside* the plate beneath the caption row,
+   attribute-styled like the Field Guide; the copy block (kicker → masthead →
+   subheader → mission tagline → CTAs) sits below the fold.
 5. **Lectures** — the blackboard object: four lecture cards wired to X video
    posts with subject-matched sketches, the chalk Uniswap buy button, the tray.
 6. **Transmissions** — Token panel ("Now transmitting", Virtuals acquire link with
@@ -135,6 +136,12 @@ full static page; JS + motion → things draw, assemble, travel.**
 - Two animations on one element need one combined `animation:` declaration;
   equal-specificity rules are resolved by stylesheet order.
 - `pathLength="100"` normalizes dash math for grow/draw loops.
+- **Stale-CSS survival**: hosts/CDNs (Hostinger et al.) can serve fresh HTML
+  with a cached old `style.css`, so any element depending on *brand-new* CSS
+  classes renders unstyled (default blue links, unconstrained SVGs). New
+  interactive elements go **inside the hero SVG with presentation attributes**
+  (fills, strokes, font attrs) — CSS is enhancement only. That's why the Field
+  Guide and Octocat links can't break.
 
 ## Integrations (all `target="_blank" rel="noopener"`)
 

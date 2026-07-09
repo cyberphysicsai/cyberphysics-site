@@ -277,53 +277,6 @@ main { position: relative; z-index: 2; }
   gap: 0.4rem;
 }
 
-/* the open-source suite, chalked under the plate — full row, always centered */
-.git-suite {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  gap: 0.7rem;
-  text-decoration: none;
-  color: var(--chalk-dim);
-  margin-bottom: 0.8rem;
-}
-
-.git-cat {
-  width: 34px;
-  height: 34px;
-  flex: none;
-  color: var(--chalk-dim);
-  transition: color 250ms ease, filter 250ms ease, transform 250ms ease;
-}
-
-.git-suite-text {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--chalk);
-  border-bottom: 1.5px dashed var(--chalk-faint);
-  padding-bottom: 0.05em;
-  transition: color 250ms ease, text-shadow 250ms ease, border-color 250ms ease;
-}
-
-.git-suite:hover .git-cat,
-.git-suite:focus-visible .git-cat {
-  color: #ffffff;
-  filter: drop-shadow(0 0 9px rgba(236, 234, 228, 0.8));
-  transform: rotate(-6deg);
-}
-
-.git-suite:hover .git-suite-text,
-.git-suite:focus-visible .git-suite-text {
-  color: #ffffff;
-  text-shadow: 0 0 14px rgba(255, 255, 255, 0.4);
-  border-color: var(--chalk);
-}
-
-.git-suite:focus-visible {
-  outline: 1.5px dashed var(--chalk);
-  outline-offset: 5px;
-}
 
 .hero-svg {
   width: 100%;
@@ -596,6 +549,14 @@ main { position: relative; z-index: 2; }
   font-family: var(--font-type);
   font-size: 7.5px;
   letter-spacing: 1px;
+}
+
+/* in-plate GitHub link: rendering is attribute-styled; this is enhancement only */
+.git-link { cursor: pointer; transition: filter 250ms ease; }
+
+.git-link:hover,
+.git-link:focus-visible {
+  filter: drop-shadow(0 0 8px rgba(236, 234, 228, 0.75)) brightness(1.4);
 }
 
 /* ---------- oscilloscope dividers ---------- */
@@ -1344,7 +1305,7 @@ h2 {
   .hero-svg {
     width: 100%;
     height: auto;
-    aspect-ratio: 560 / 480;
+    aspect-ratio: 560 / 520;
     max-height: calc(100dvh - 11rem);
   }
 }
@@ -1353,8 +1314,6 @@ h2 {
   .site-header { justify-content: center; }
   .footer-row { justify-content: center; text-align: center; }
   .social-row { justify-content: center; }
-  .git-cat { width: 38px; height: 38px; }
-  .git-suite-text { font-size: 1.4rem; }
   .panel-stamp { position: static; display: inline-block; margin-bottom: 0.9rem; }
   .about-stamp { position: static; display: inline-block; margin-bottom: 0.9rem; }
 }
